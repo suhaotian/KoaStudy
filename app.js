@@ -30,22 +30,30 @@ Router.get('/', (ctx, next) => {
 
 function requestTodos() {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve([])
-    }, 100)
+    request.get('http://cnodejs.org/api/v1/topics?page=1&tab=ask&limit=10', (e, r, b) => {
+      if (e) {
+        reject(e)
+        return
+      }
+      resolve(JSON.parse(b))
+    })
   })
 }
 
 function requestProfile() {
   return new Promise((resolve, reject) => {
-    request.get('https://www.v2ex.com/api/nodes/all.json', (e, r, b) => {
+    request.get('http://cnodejs.org/api/v1/topics?page=1&tab=job&limit=10', (e, r, b) => {
+      if (e) {
+        reject(e)
+        return
+      }
       resolve(JSON.parse(b))
     })
   })
 }
 
 Router.get('/todos', async (ctx, next) => {
-  const data = await Promise.all([requestTodos(), requestProfile()])
+  const data = await Promise.all([requestProfile(), requestTodos()])
   ctx.body = {todos: data[0], profile: data[1]}
 })
 /*
