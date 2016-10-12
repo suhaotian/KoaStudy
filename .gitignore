@@ -2,5 +2,6 @@
 /tmp/*
 /npm-debug.log
 /dist/*
+./config.js
 .DS_Store
 .vscode

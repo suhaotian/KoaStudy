@@ -4,7 +4,8 @@
   "description": "study koa to write http server",
   "main": "index.js",
   "scripts": {
-    "test": "echo 'no test'"
+    "test": "echo 'no test'",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,9 @@
     "babel-core": "^6.10.4",
     "babel-preset-es2015-node5": "^1.2.0",
     "babel-preset-stage-3": "^6.11.0",
-    "koa": "^2.0.0"
+    "koa": "^2.0.0",
+    "koa-router": "^7.0.1",
+    "mysql": "github:mysqljs/mysql",
+    "request": "^2.75.0"
   }
 }

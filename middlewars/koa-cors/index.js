@@ -3,7 +3,7 @@
  */
 
 function makeMiddleware(options) {
-  
+
   options = options || {}
 
   var defaults = {
@@ -41,7 +41,7 @@ function makeMiddleware(options) {
   }
 
   return function cors(ctx, next) {
-    
+
     /**
      * Access Control Allow Origin
      */
@@ -108,7 +108,7 @@ function makeMiddleware(options) {
     if (ctx.method === 'OPTIONS') {
       ctx.status = 204
     } else {
-      next()
+      return next()
     }
   }
 }
